@@ -1,11 +1,3 @@
-# Note: On the assingment page it mentions:
-#
-# Returns a list of transactions as well as a totalBalance, totalCount, and page number.
-# The totalCount tells you the total number of transactions.
-#
-# However, the totalBalance isn't something that is returned by the API. I think this is a typo.
-
-
 require 'net/http'
 require 'uri'
 require 'json'
@@ -70,9 +62,11 @@ def get_name_tokens(name)
     end
   end
 
+  # sort longest first, to get the most exact matches sooner
   all_tokens.sort_by { |a| -a.length }
 end
 
+# remove words from the stop list
 def remove_stop_words(str)
   tokens = get_name_tokens(str)
 
